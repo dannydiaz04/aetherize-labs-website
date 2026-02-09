@@ -9,7 +9,7 @@ const footerLinks = {
     { name: "Aerospace SSTO", href: "#" },
     { name: "Space Mining", href: "#" },
     { name: "Analytics AI", href: "#" },
-    { name: "Nutrition AI", href: "#" },
+    { name: "Phone Eats First AI", href: "https://phoneeatsfirst.ai" },
   ],
   company: [
     { name: "About", href: "#" },
@@ -23,6 +23,12 @@ const footerLinks = {
     { name: "Blog", href: "#" },
     { name: "Contact", href: "#contact" },
   ],
+  iosApp: [
+    {
+      name: "Phone Eats First AI",
+      href: "https://apps.apple.com/us/app/phone-eats-first-ai/id6747300501",
+    },
+  ],
 };
 
 const socialLinks = [
@@ -35,7 +41,7 @@ export function Footer() {
   return (
     <footer className="relative border-t border-border bg-background">
       <div className="container mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <AetherizeLogo className="mb-6" />
@@ -99,6 +105,24 @@ export function Footer() {
                   <a
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">iOS App</h4>
+            <ul className="space-y-3">
+              {footerLinks.iosApp.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {link.name}
                   </a>

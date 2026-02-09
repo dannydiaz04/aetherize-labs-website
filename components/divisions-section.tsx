@@ -13,45 +13,34 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 
 const divisions = [
+  // {
+  //   title: "Aerospace SSTO",
+  //   subtitle: "Single Stage to Orbit",
+  //   description:
+  //     "Revolutionary aircraft and jet propulsion systems designed for single-stage takeoff to orbit. Breaking the barriers of traditional multi-stage rockets.",
+  //   icon: Rocket,
+  //   features: [
+  //     "Reusable Launch Systems",
+  //     "Advanced Propulsion",
+  //     "Atmospheric Re-entry",
+  //   ],
+  //   gradient: "from-primary/20 to-primary/5",
+  //   accentColor: "text-primary",
+  //   borderColor: "border-primary/20 hover:border-primary/40",
+  // },
+  // {
+  //   title: "Space Mining",
+  //   subtitle: "Extraterrestrial Resources",
+  //   description:
+  //     "Pioneering the extraction and utilization of resources from asteroids and celestial bodies. The next frontier of sustainable resource acquisition.",
+  //   icon: Gem,
+  //   features: ["Asteroid Prospecting", "Zero-G Extraction", "Resource Processing"],
+  //   gradient: "from-accent/20 to-accent/5",
+  //   accentColor: "text-accent",
+  //   borderColor: "border-accent/20 hover:border-accent/40",
+  // },
   {
-    title: "Aerospace SSTO",
-    subtitle: "Single Stage to Orbit",
-    description:
-      "Revolutionary aircraft and jet propulsion systems designed for single-stage takeoff to orbit. Breaking the barriers of traditional multi-stage rockets.",
-    icon: Rocket,
-    features: [
-      "Reusable Launch Systems",
-      "Advanced Propulsion",
-      "Atmospheric Re-entry",
-    ],
-    gradient: "from-primary/20 to-primary/5",
-    accentColor: "text-primary",
-    borderColor: "border-primary/20 hover:border-primary/40",
-  },
-  {
-    title: "Space Mining",
-    subtitle: "Extraterrestrial Resources",
-    description:
-      "Pioneering the extraction and utilization of resources from asteroids and celestial bodies. The next frontier of sustainable resource acquisition.",
-    icon: Gem,
-    features: ["Asteroid Prospecting", "Zero-G Extraction", "Resource Processing"],
-    gradient: "from-accent/20 to-accent/5",
-    accentColor: "text-accent",
-    borderColor: "border-accent/20 hover:border-accent/40",
-  },
-  {
-    title: "Analytics AI",
-    subtitle: "Intelligent Insights",
-    description:
-      "Advanced artificial intelligence systems for data analysis, pattern recognition, and predictive modeling across industries.",
-    icon: BarChart3,
-    features: ["Predictive Analytics", "Deep Learning", "Real-time Processing"],
-    gradient: "from-primary/20 to-accent/5",
-    accentColor: "text-primary",
-    borderColor: "border-primary/20 hover:border-primary/40",
-  },
-  {
-    title: "Nutrition AI",
+    title: "Phone Eats First AI",
     subtitle: "Personalized Health",
     description:
       "AI-powered nutrition optimization platforms that analyze individual biomarkers and genetic data for personalized dietary recommendations.",
@@ -61,9 +50,21 @@ const divisions = [
       "Genetic Integration",
       "Adaptive Recommendations",
     ],
+    href: "https://phoneeatsfirst.ai",
     gradient: "from-accent/20 to-primary/5",
     accentColor: "text-accent",
     borderColor: "border-accent/20 hover:border-accent/40",
+  },
+  {
+    title: "Ignition Analytics AI",
+    subtitle: "Intelligent Insights",
+    description:
+      "Advanced artificial intelligence systems for data analysis, pattern recognition, and predictive modeling across industries.",
+    icon: BarChart3,
+    features: ["Predictive Analytics", "Deep Learning", "Real-time Processing"],
+    gradient: "from-primary/20 to-accent/5",
+    accentColor: "text-primary",
+    borderColor: "border-primary/20 hover:border-primary/40",
   },
 ];
 
@@ -134,9 +135,11 @@ function DivisionCard({
 
           {/* CTA */}
           <motion.a
-            href="#"
+            href={division.href ?? "#"}
             className={`inline-flex items-center gap-2 text-sm font-medium ${division.accentColor} group/link`}
             whileHover={{ x: 5 }}
+            target={division.href ? "_blank" : undefined}
+            rel={division.href ? "noopener noreferrer" : undefined}
           >
             Learn More
             <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
