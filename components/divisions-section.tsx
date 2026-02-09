@@ -43,12 +43,12 @@ const divisions = [
     title: "Phone Eats First AI",
     subtitle: "Personalized Health",
     description:
-      "AI-powered nutrition optimization platforms that analyze individual biomarkers and genetic data for personalized dietary recommendations.",
+      "AI-powered nutrition optimization platform that makes food tracking easy and intuitive.",
     icon: Apple,
     features: [
-      "Biomarker Analysis",
-      "Genetic Integration",
-      "Adaptive Recommendations",
+      "Ease of Calorie Tracking",
+      "Agentic Flow To Lose Weight",
+      "Intuitive Analytics",
     ],
     href: "https://phoneeatsfirst.ai",
     gradient: "from-accent/20 to-primary/5",
