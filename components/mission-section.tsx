@@ -59,11 +59,12 @@ export function MissionSection() {
             className="text-2xl md:text-4xl font-light leading-relaxed text-foreground mb-8 text-balance"
             style={{ opacity }}
           >
-            &ldquo;We dare to take on the world&apos;s greatest challenges,
+            &ldquo;The mission of Aetherize Labs is and always will be to make the impossible
+            more possible. We tackle humanity&apos;s greatest challenges for profit and for the benefit of humanity,
             transforming the{" "}
             <span className="text-primary font-medium">impossible</span> into
             the inevitable. Just as Einstein&apos;s pursuit of the aether led to
-            revolutionary understanding, our pursuit leads to{" "}
+            revolutionary relativistic physics, our pursuit leads to{" "}
             <span className="text-accent font-medium">breakthrough innovation</span>.&rdquo;
           </motion.blockquote>
 

@@ -12,42 +12,42 @@ import {
 } from "lucide-react";
 
 const technologies = [
-  {
-    icon: Zap,
-    title: "Quantum Propulsion",
-    description:
-      "Next-generation propulsion systems harnessing quantum mechanical principles for unprecedented efficiency.",
-  },
-  {
-    icon: Shield,
-    title: "Adaptive Shielding",
-    description:
-      "Self-healing materials and electromagnetic barriers protecting spacecraft from cosmic radiation.",
-  },
+  // {
+  //   icon: Zap,
+  //   title: "Quantum Propulsion",
+  //   description:
+  //     "Next-generation propulsion systems harnessing quantum mechanical principles for unprecedented efficiency.",
+  // },
+  // {
+  //   icon: Shield,
+  //   title: "Adaptive Shielding",
+  //   description:
+  //     "Self-healing materials and electromagnetic barriers protecting spacecraft from cosmic radiation.",
+  // },
   {
     icon: Cpu,
     title: "Neural Networks",
     description:
       "Custom AI architectures designed for space-grade computing and real-time decision making.",
   },
-  {
-    icon: Globe,
-    title: "Orbital Mechanics",
-    description:
-      "Precision trajectory calculations enabling efficient single-stage orbital insertion.",
-  },
+  // {
+  //   icon: Globe,
+  //   title: "Orbital Mechanics",
+  //   description:
+  //     "Precision trajectory calculations enabling efficient single-stage orbital insertion.",
+  // },
   {
     icon: Layers,
     title: "Material Science",
     description:
       "Advanced composites and metamaterials engineered for extreme temperature differentials.",
   },
-  {
-    icon: Infinity,
-    title: "Sustainable Systems",
-    description:
-      "Closed-loop life support and energy systems for long-duration space operations.",
-  },
+  // {
+  //   icon: Infinity,
+  //   title: "Sustainable Systems",
+  //   description:
+  //     "Closed-loop life support and energy systems for long-duration space operations.",
+  // },
 ];
 
 function TechCard({
@@ -141,9 +141,8 @@ export function TechnologySection() {
             <TechCard key={tech.title} tech={tech} index={index} />
           ))}
         </div>
-
         {/* Bottom CTA */}
-        <motion.div
+        {/* <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0 }}
           animate={isHeaderInView ? { opacity: 1 } : {}}
@@ -159,7 +158,7 @@ export function TechnologySection() {
             View Publications & Papers
             <span aria-hidden="true">→</span>
           </a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

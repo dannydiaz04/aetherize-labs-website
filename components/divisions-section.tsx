@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import type { ComponentType } from "react";
 import {
   Rocket,
   Gem,
@@ -12,7 +13,20 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const divisions = [
+type Division = {
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: ComponentType<{ className?: string }>;
+  features: string[];
+  href?: string;
+  comingSoon?: boolean;
+  gradient: string;
+  accentColor: string;
+  borderColor: string;
+};
+
+const divisions: Division[] = [
   // {
   //   title: "Aerospace SSTO",
   //   subtitle: "Single Stage to Orbit",
@@ -62,6 +76,7 @@ const divisions = [
       "Advanced artificial intelligence systems for data analysis, pattern recognition, and predictive modeling across industries.",
     icon: BarChart3,
     features: ["Predictive Analytics", "Deep Learning", "Real-time Processing"],
+    comingSoon: true,
     gradient: "from-primary/20 to-accent/5",
     accentColor: "text-primary",
     borderColor: "border-primary/20 hover:border-primary/40",
@@ -72,7 +87,7 @@ function DivisionCard({
   division,
   index,
 }: {
-  division: (typeof divisions)[0];
+  division: Division;
   index: number;
 }) {
   const ref = useRef(null);
@@ -112,7 +127,14 @@ function DivisionCard({
 
           {/* Title */}
           <h3 className="text-2xl font-bold mt-2 mb-4 text-foreground">
-            {division.title}
+            <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
+              <span>{division.title}</span>
+              {division.comingSoon ? (
+                <span className="text-sm font-mono text-muted-foreground">
+                  (Coming Soon)
+                </span>
+              ) : null}
+            </span>
           </h3>
 
           {/* Description */}
@@ -134,16 +156,23 @@ function DivisionCard({
           </ul>
 
           {/* CTA */}
-          <motion.a
-            href={division.href ?? "#"}
-            className={`inline-flex items-center gap-2 text-sm font-medium ${division.accentColor} group/link`}
-            whileHover={{ x: 5 }}
-            target={division.href ? "_blank" : undefined}
-            rel={division.href ? "noopener noreferrer" : undefined}
-          >
-            Learn More
-            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-          </motion.a>
+          {division.href ? (
+            <motion.a
+              href={division.href}
+              className={`inline-flex items-center gap-2 text-sm font-medium ${division.accentColor} group/link`}
+              whileHover={{ x: 5 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn More
+              <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+            </motion.a>
+          ) : division.comingSoon ? (
+            <div className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
+              Coming Soon
+              <ArrowRight className="w-4 h-4 opacity-60" />
+            </div>
+          ) : null}
         </CardContent>
       </Card>
     </motion.div>

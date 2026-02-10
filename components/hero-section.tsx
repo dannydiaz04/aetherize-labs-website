@@ -5,10 +5,15 @@ import { ArrowDown, Rocket, Brain, Atom } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
       {/* Animated background gradients */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
           animate={{
@@ -76,15 +81,19 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Button
+            type="button"
             size="lg"
             className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-medium"
+            onClick={() => scrollToSection("divisions")}
           >
             Explore Our Divisions
           </Button>
           <Button
+            type="button"
             variant="outline"
             size="lg"
             className="border-border hover:bg-secondary/50 px-8 py-6 text-base font-medium bg-transparent"
+            onClick={() => scrollToSection("mission")}
           >
             Our Mission
           </Button>
@@ -92,7 +101,7 @@ export function HeroSection() {
 
         {/* Floating Icons */}
         <motion.div
-          className="flex items-center justify-center gap-12 opacity-60"
+          className="flex items-center justify-center gap-12 opacity-60 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ duration: 1, delay: 0.8 }}
