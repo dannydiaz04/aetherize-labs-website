@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { AetherizeLogo } from "./aetherize-logo";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Divisions", href: "#divisions" },
+  { name: "Capabilities", href: "#capabilities" },
   { name: "Mission", href: "#mission" },
   { name: "Technology", href: "#technology" },
   { name: "Contact", href: "#contact" },
@@ -18,61 +18,65 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border"
-            : "bg-transparent"
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        className="fixed inset-x-0 top-0 z-50"
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <AetherizeLogo />
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-              </motion.a>
-            ))}
-            <Button
-              variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary bg-transparent"
-            >
-              Learn More
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+        <div className="px-4 pt-4 sm:px-6">
+          <nav
+            className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 sm:px-5 ${
+              isScrolled
+                ? "glass border border-border/80 shadow-[0_8px_40px_-20px_rgba(0,0,0,0.8)]"
+                : "border border-transparent"
+            }`}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </nav>
+            <AetherizeLogo />
+
+            <div className="hidden items-center gap-1 md:flex">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="rounded-full px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            <div className="hidden md:block">
+              <Button
+                asChild
+                className="group rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90"
+              >
+                <a href="#contact">
+                  Get in touch
+                  <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </Button>
+            </div>
+
+            <button
+              className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary/60 md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </nav>
+        </div>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -81,15 +85,15 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+            <div className="flex h-full flex-col items-center justify-center gap-7">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-2xl font-medium text-foreground"
+                  className="font-display text-3xl font-medium text-foreground"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -98,13 +102,14 @@ export function Navigation() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.32 }}
               >
                 <Button
-                  variant="outline"
-                  className="border-primary/50 text-primary bg-transparent"
+                  asChild
+                  className="rounded-full bg-primary px-6 text-primary-foreground"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  Learn More
+                  <a href="#contact">Get in touch</a>
                 </Button>
               </motion.div>
             </div>

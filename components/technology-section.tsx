@@ -3,93 +3,84 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  Zap,
-  Shield,
+  BrainCircuit,
+  ScanEye,
+  Hand,
+  Boxes,
   Cpu,
-  Globe,
-  Layers,
-  Infinity,
+  Radar,
+  type LucideProps,
 } from "lucide-react";
+import type { ComponentType } from "react";
 
-const technologies = [
-  // {
-  //   icon: Zap,
-  //   title: "Quantum Propulsion",
-  //   description:
-  //     "Next-generation propulsion systems harnessing quantum mechanical principles for unprecedented efficiency.",
-  // },
-  // {
-  //   icon: Shield,
-  //   title: "Adaptive Shielding",
-  //   description:
-  //     "Self-healing materials and electromagnetic barriers protecting spacecraft from cosmic radiation.",
-  // },
+type Tech = {
+  icon: ComponentType<LucideProps>;
+  title: string;
+  description: string;
+};
+
+const technologies: Tech[] = [
+  {
+    icon: BrainCircuit,
+    title: "Embodied foundation models",
+    description:
+      "Large models trained to map perception directly to action, giving robots general skills that transfer across tasks and hardware.",
+  },
+  {
+    icon: ScanEye,
+    title: "Perception & sensor fusion",
+    description:
+      "Real-time fusion of vision, depth, and proprioception into a coherent world model robust enough for the real world.",
+  },
+  {
+    icon: Hand,
+    title: "Manipulation & locomotion",
+    description:
+      "Dexterous control policies for grasping, assembly, and whole-body movement across uneven and dynamic terrain.",
+  },
+  {
+    icon: Boxes,
+    title: "Sim-to-real training",
+    description:
+      "Massively parallel simulation and domain randomization that lets policies learn safely before they ever touch a payload.",
+  },
   {
     icon: Cpu,
-    title: "Neural Networks",
+    title: "On-robot edge compute",
     description:
-      "Custom AI architectures designed for space-grade computing and real-time decision making.",
+      "Low-latency inference at the edge, engineered for power, thermal, and reliability budgets that survive the launch range.",
   },
-  // {
-  //   icon: Globe,
-  //   title: "Orbital Mechanics",
-  //   description:
-  //     "Precision trajectory calculations enabling efficient single-stage orbital insertion.",
-  // },
   {
-    icon: Layers,
-    title: "Material Science",
+    icon: Radar,
+    title: "Launch automation systems",
     description:
-      "Advanced composites and metamaterials engineered for extreme temperature differentials.",
+      "Autonomous ground handling, integration, and range coordination that take humans out of the most hazardous loops.",
   },
-  // {
-  //   icon: Infinity,
-  //   title: "Sustainable Systems",
-  //   description:
-  //     "Closed-loop life support and energy systems for long-duration space operations.",
-  // },
 ];
 
-function TechCard({
-  tech,
-  index,
-}: {
-  tech: (typeof technologies)[0];
-  index: number;
-}) {
+function TechCard({ tech, index }: { tech: Tech; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const Icon = tech.icon;
 
   return (
     <motion.div
       ref={ref}
-      className="group relative"
-      initial={{ opacity: 0, y: 30 }}
+      className="group relative overflow-hidden rounded-2xl border border-border bg-card/30 p-7 transition-all duration-300 hover:border-primary/30 hover:bg-card/50"
+      initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="p-6 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 transition-all duration-300 hover:bg-secondary/50">
-        {/* Icon */}
-        <motion.div
-          className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary"
-          whileHover={{ scale: 1.1, rotate: 5 }}
-        >
-          <tech.icon className="w-6 h-6" />
-        </motion.div>
-
-        {/* Title */}
-        <h3 className="text-lg font-semibold text-foreground mb-2">
-          {tech.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          {tech.description}
-        </p>
-
-        {/* Hover glow effect */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="mb-5 inline-flex rounded-xl border border-border bg-secondary/40 p-2.5 text-primary transition-colors group-hover:text-accent">
+        <Icon className="h-5 w-5" strokeWidth={1.5} />
       </div>
+      <h3 className="text-lg font-semibold tracking-tight text-foreground">
+        {tech.title}
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        {tech.description}
+      </p>
+      <div className="pointer-events-none absolute -bottom-px left-7 right-7 h-px bg-primary/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     </motion.div>
   );
 }
@@ -99,66 +90,32 @@ export function TechnologySection() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="technology" className="relative py-32 px-6 bg-secondary/20">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(100, 180, 220, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(100, 180, 220, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
+    <section id="technology" className="relative px-6 py-28 sm:py-36">
+      <div className="mx-auto max-w-6xl">
+        <div className="section-rule mb-16 h-px w-full" />
 
-      <div className="container mx-auto max-w-7xl relative z-10">
-        {/* Section Header */}
         <motion.div
           ref={headerRef}
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 24 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-xs font-mono uppercase tracking-widest text-primary mb-4 block">
-            Core Technologies
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 text-balance">
-            Engineering the Future
+          <span className="eyebrow text-primary">The stack</span>
+          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            Intelligence that acts.
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Our proprietary technologies push the boundaries of what&apos;s
-            possible, creating solutions that enable our ambitious missions.
+          <p className="mt-5 text-pretty text-lg leading-relaxed text-muted-foreground">
+            Our core technologies turn models into motion — the connective
+            tissue between an AI&apos;s decision and a robot&apos;s next move.
           </p>
         </motion.div>
 
-        {/* Technology Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {technologies.map((tech, index) => (
             <TechCard key={tech.title} tech={tech} index={index} />
           ))}
         </div>
-        {/* Bottom CTA */}
-        {/* <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0 }}
-          animate={isHeaderInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <p className="text-muted-foreground mb-4">
-            Interested in our research?
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
-          >
-            View Publications & Papers
-            <span aria-hidden="true">→</span>
-          </a>
-        </motion.div> */}
       </div>
     </section>
   );

@@ -1,112 +1,79 @@
 "use client";
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Quote } from "lucide-react";
+
+const stats = [
+  { value: "3", label: "Core programs" },
+  { value: "∞", label: "Possibilities" },
+  { value: "1", label: "Shared mission" },
+  { value: "0", label: "Limits" },
+];
 
 export function MissionSection() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   return (
     <section
       id="mission"
       ref={containerRef}
-      className="relative py-32 px-6 overflow-hidden"
+      className="relative overflow-hidden px-6 py-28 sm:py-36"
     >
-      {/* Background Elements */}
-      <motion.div
-        className="absolute inset-0 opacity-30"
-        style={{ y }}
-      >
-        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-accent/50 to-transparent" />
-      </motion.div>
+      {/* faint crosshair lines */}
+      <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div className="absolute left-0 top-1/2 h-px w-full bg-primary/20" />
+      </div>
 
-      <div className="container mx-auto max-w-5xl relative z-10">
+      <div className="relative mx-auto max-w-4xl">
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Section Label */}
-          <span className="text-xs font-mono uppercase tracking-widest text-primary mb-8 block">
-            Our Mission
-          </span>
-
-          {/* Quote Icon */}
-          <motion.div
-            className="flex justify-center mb-8"
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.3, type: "spring" }}
-          >
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-              <Quote className="w-8 h-8 text-primary" />
-            </div>
-          </motion.div>
-
-          {/* Mission Statement */}
-          <motion.blockquote
-            className="text-2xl md:text-4xl font-light leading-relaxed text-foreground mb-8 text-balance"
-            style={{ opacity }}
-          >
-            &ldquo;The mission of Aetherize Labs is and always will be to make the impossible
-            more possible. We tackle humanity&apos;s greatest challenges for profit and for the benefit of humanity,
-            transforming the{" "}
-            <span className="text-primary font-medium">impossible</span> into
-            the inevitable. Just as Einstein&apos;s pursuit of the aether led to
-            revolutionary relativistic physics, our pursuit leads to{" "}
-            <span className="text-accent font-medium">breakthrough innovation</span>.&rdquo;
-          </motion.blockquote>
-
-          {/* Company Name */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <span className="text-sm font-mono text-muted-foreground tracking-wider">
-              — Aetherize Labs LLC
-            </span>
-          </motion.div>
-        </motion.div>
-
-        {/* Stats Row */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-20 border-t border-border"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          {[
-            { value: "4", label: "Research Divisions" },
-            { value: "∞", label: "Possibilities" },
-            { value: "1", label: "Mission" },
-            { value: "0", label: "Limits" },
-          ].map((stat, index) => (
-            <motion.div
+          <span className="eyebrow text-primary">Our mantra</span>
+
+          <blockquote className="mt-8 text-balance font-display text-2xl font-light leading-snug text-foreground sm:text-3xl lg:text-4xl">
+            We solve the most challenging and complex problems by harnessing the
+            symmetry between{" "}
+            <span className="text-primary font-normal">information</span>{" "}
+            <span className="font-mono text-primary/70">⇄</span>{" "}
+            <span className="text-primary font-normal">energy</span>.
+          </blockquote>
+
+          <p className="mx-auto mt-8 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Intelligence is information given direction; motion is energy given
+            purpose. Aetherize Labs lives at the boundary where the two meet —
+            turning models into machines, and machines into work, from the
+            factory floor to the launch pad.
+          </p>
+
+          <div className="mt-8">
+            <span className="font-mono text-sm tracking-wider text-muted-foreground">
+              — Aetherize Labs LLC
+            </span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border/60 md:grid-cols-4"
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {stats.map((stat) => (
+            <div
               key={stat.label}
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
+              className="bg-card/40 px-6 py-8 text-center backdrop-blur-sm"
             >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+              <div className="font-display text-4xl font-semibold text-primary">
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground font-mono uppercase tracking-wider">
+              <div className="eyebrow mt-2 text-muted-foreground">
                 {stat.label}
               </div>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
       </div>

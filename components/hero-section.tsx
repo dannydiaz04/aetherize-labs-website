@@ -1,160 +1,132 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Rocket, Brain, Atom } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const stats = [
+  { value: "3", label: "Core programs" },
+  { value: "Earth → Orbit", label: "Operating domain" },
+  { value: "24/7", label: "Autonomous systems" },
+];
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function HeroSection() {
   const scrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-      {/* Animated background gradients */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section className="relative flex min-h-screen flex-col justify-center px-6 pb-20 pt-36 sm:pt-40">
+      <div className="mx-auto w-full max-w-6xl">
+        {/* Eyebrow */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-            scale: [1.2, 1, 1.2],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Tagline */}
-        <motion.div
-          className="flex items-center justify-center gap-2 mb-6"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease }}
         >
-          <span className="px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-primary border border-primary/30 rounded-full bg-primary/5">
-            Deep Tech Research & Development
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3.5 py-1.5">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+            </span>
+            <span className="eyebrow text-muted-foreground">
+              Robotics · Embodied Intelligence · Aerospace
+            </span>
           </span>
         </motion.div>
 
-        {/* Main Headline */}
+        {/* Headline */}
         <motion.h1
-          className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance"
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-8 max-w-4xl text-balance text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.08, ease }}
         >
-          <span className="text-foreground">The Universe is</span>
+          <span className="text-foreground">Embodied intelligence</span>
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">
-            Waiting to be Known
-          </span>
+          <span className="text-primary">for the physical world.</span>
         </motion.h1>
 
-        {/* Subheadline */}
+        {/* Subhead */}
         <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-pretty"
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.18, ease }}
         >
-          Aetherize Labs LLC pioneers the impossible. From single-stage-to-orbit
-          aerospace to space mining and advanced AI, we energize humanity&apos;s
-          boldest ambitions.
+          Aetherize Labs builds robots, the embodied AI that gives them
+          autonomy, and the robotic systems engineered to run tomorrow&apos;s
+          aerospace launch operations.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTAs */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.28, ease }}
         >
           <Button
             type="button"
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-medium"
-            onClick={() => scrollToSection("divisions")}
+            className="group h-12 rounded-full bg-primary px-7 text-base text-primary-foreground hover:bg-primary/90"
+            onClick={() => scrollToSection("capabilities")}
           >
-            Explore Our Divisions
+            Explore our work
+            <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button
             type="button"
             variant="outline"
             size="lg"
-            className="border-border hover:bg-secondary/50 px-8 py-6 text-base font-medium bg-transparent"
+            className="h-12 rounded-full border-border bg-transparent px-7 text-base hover:bg-secondary/50"
             onClick={() => scrollToSection("mission")}
           >
-            Our Mission
+            Our mission
           </Button>
         </motion.div>
 
-        {/* Floating Icons */}
-        <motion.div
-          className="flex items-center justify-center gap-12 opacity-60 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ duration: 1, delay: 0.8 }}
+        {/* Stat strip */}
+        <motion.dl
+          className="mt-20 grid max-w-3xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border/60 sm:grid-cols-3"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease }}
         >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Rocket className="w-8 h-8 text-primary" />
-          </motion.div>
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5,
-            }}
-          >
-            <Brain className="w-8 h-8 text-accent" />
-          </motion.div>
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-          >
-            <Atom className="w-8 h-8 text-primary" />
-          </motion.div>
-        </motion.div>
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-card/40 px-6 py-5 backdrop-blur-sm">
+              <dt className="font-display text-xl font-semibold text-foreground sm:text-2xl">
+                {stat.value}
+              </dt>
+              <dd className="eyebrow mt-1.5 text-muted-foreground">
+                {stat.label}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      {/* Scroll cue */}
+      <motion.button
+        type="button"
+        onClick={() => scrollToSection("capabilities")}
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-foreground sm:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1 }}
+        aria-label="Scroll to capabilities"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
+        <span className="eyebrow">Scroll</span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-muted-foreground"
         >
-          <span className="text-xs font-mono uppercase tracking-widest">
-            Scroll to Discover
-          </span>
-          <ArrowDown className="w-4 h-4" />
-        </motion.div>
-      </motion.div>
+          <ArrowDown className="h-4 w-4" />
+        </motion.span>
+      </motion.button>
     </section>
   );
 }

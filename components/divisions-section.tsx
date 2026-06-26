@@ -4,177 +4,174 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { ComponentType } from "react";
 import {
+  Bot,
   Rocket,
-  Gem,
-  BarChart3,
   Apple,
-  ArrowRight,
-  Sparkles,
+  BarChart3,
+  ArrowUpRight,
+  type LucideProps,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 
-type Division = {
+type Program = {
+  index: string;
   title: string;
   subtitle: string;
   description: string;
-  icon: ComponentType<{ className?: string }>;
-  features: string[];
+  icon: ComponentType<LucideProps>;
+  points: string[];
   href?: string;
-  comingSoon?: boolean;
-  gradient: string;
-  accentColor: string;
-  borderColor: string;
+  cta?: string;
+  status?: "live" | "soon";
+  featured?: boolean;
 };
 
-const divisions: Division[] = [
-  // {
-  //   title: "Aerospace SSTO",
-  //   subtitle: "Single Stage to Orbit",
-  //   description:
-  //     "Revolutionary aircraft and jet propulsion systems designed for single-stage takeoff to orbit. Breaking the barriers of traditional multi-stage rockets.",
-  //   icon: Rocket,
-  //   features: [
-  //     "Reusable Launch Systems",
-  //     "Advanced Propulsion",
-  //     "Atmospheric Re-entry",
-  //   ],
-  //   gradient: "from-primary/20 to-primary/5",
-  //   accentColor: "text-primary",
-  //   borderColor: "border-primary/20 hover:border-primary/40",
-  // },
-  // {
-  //   title: "Space Mining",
-  //   subtitle: "Extraterrestrial Resources",
-  //   description:
-  //     "Pioneering the extraction and utilization of resources from asteroids and celestial bodies. The next frontier of sustainable resource acquisition.",
-  //   icon: Gem,
-  //   features: ["Asteroid Prospecting", "Zero-G Extraction", "Resource Processing"],
-  //   gradient: "from-accent/20 to-accent/5",
-  //   accentColor: "text-accent",
-  //   borderColor: "border-accent/20 hover:border-accent/40",
-  // },
+const programs: Program[] = [
   {
-    title: "Phone Eats First AI",
-    subtitle: "Personalized Health",
+    index: "01",
+    title: "Robotics & Embodied Intelligence",
+    subtitle: "Core program",
     description:
-      "AI-powered nutrition optimization platform that makes food tracking easy and intuitive.",
-    icon: Apple,
-    features: [
-      "Ease of Calorie Tracking",
-      "Agentic Flow To Lose Weight",
-      "Intuitive Analytics",
-    ],
-    href: "https://phoneeatsfirst.ai",
-    gradient: "from-accent/20 to-primary/5",
-    accentColor: "text-accent",
-    borderColor: "border-accent/20 hover:border-accent/40",
+      "General-purpose robots and the embodied AI that lets them perceive, reason, and act in unstructured environments — bridging the gap between digital intelligence and physical work.",
+    icon: Bot,
+    points: ["Whole-body manipulation", "Real-world autonomy", "Learned control policies"],
+    featured: true,
   },
   {
-    title: "Ignition Analytics AI",
-    subtitle: "Intelligent Insights",
+    index: "02",
+    title: "Aerospace Launch Operations",
+    subtitle: "Core program",
     description:
-      "Advanced artificial intelligence systems for data analysis, pattern recognition, and predictive modeling across industries.",
+      "Robotic ground systems and autonomous handling for launch sites — automating the dangerous, repetitive, and precision-critical work of getting hardware to orbit.",
+    icon: Rocket,
+    points: ["Autonomous ground handling", "Robotic integration & checkout", "Range automation"],
+    featured: true,
+  },
+  {
+    index: "03",
+    title: "Phone Eats First AI",
+    subtitle: "Applied AI · Live",
+    description:
+      "An AI-powered nutrition platform that makes calorie tracking effortless, with agentic guidance that helps people reach their goals.",
+    icon: Apple,
+    points: ["Effortless calorie tracking", "Agentic coaching", "Intuitive analytics"],
+    href: "https://phoneeatsfirst.ai",
+    cta: "Visit product",
+    status: "live",
+  },
+  {
+    index: "04",
+    title: "Ignition Analytics AI",
+    subtitle: "Applied AI · In development",
+    description:
+      "Advanced analytics and predictive modeling that turns raw operational data into decisions — built on the same intelligence stack powering our robots.",
     icon: BarChart3,
-    features: ["Predictive Analytics", "Deep Learning", "Real-time Processing"],
-    comingSoon: true,
-    gradient: "from-primary/20 to-accent/5",
-    accentColor: "text-primary",
-    borderColor: "border-primary/20 hover:border-primary/40",
+    points: ["Predictive analytics", "Pattern recognition", "Real-time processing"],
+    status: "soon",
+    cta: "Coming soon",
   },
 ];
 
-function DivisionCard({
-  division,
-  index,
-}: {
-  division: Division;
-  index: number;
-}) {
+function StatusBadge({ status }: { status: "live" | "soon" }) {
+  if (status === "live") {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-wider text-accent">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+        Live
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-highlight/30 bg-highlight/10 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-wider text-highlight">
+      In dev
+    </span>
+  );
+}
+
+function ProgramCard({ program, index }: { program: Program; index: number }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const Icon = program.icon;
+
+  const inner = (
+    <>
+      <div className="relative flex h-full flex-col p-8">
+        <div className="flex items-start justify-between">
+          <div className="flex items-center justify-center rounded-xl border border-border bg-secondary/40 p-3 text-primary transition-colors duration-300 group-hover:border-primary/40 group-hover:text-accent">
+            <Icon className="h-6 w-6" strokeWidth={1.5} />
+          </div>
+          <span className="font-mono text-xs text-muted-foreground/50">
+            {program.index}
+          </span>
+        </div>
+
+        <div className="mt-6 flex items-center gap-3">
+          <span className="eyebrow text-primary/80">{program.subtitle}</span>
+          {program.status && <StatusBadge status={program.status} />}
+        </div>
+
+        <h3 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
+          {program.title}
+        </h3>
+
+        <p className="mt-3 leading-relaxed text-muted-foreground">
+          {program.description}
+        </p>
+
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {program.points.map((point) => (
+            <li
+              key={point}
+              className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
+            >
+              {point}
+            </li>
+          ))}
+        </ul>
+
+        {program.cta && (
+          <div className="mt-auto pt-7">
+            <span
+              className={`inline-flex items-center gap-1.5 text-sm font-medium ${
+                program.href
+                  ? "text-accent group-hover:text-primary"
+                  : "text-muted-foreground"
+              } transition-colors`}
+            >
+              {program.cta}
+              {program.href && (
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              )}
+            </span>
+          </div>
+        )}
+      </div>
+    </>
+  );
+
+  const baseClass = `group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:bg-card/70 ${
+    program.featured ? "lg:col-span-3" : "lg:col-span-3"
+  }`;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      className={program.featured ? "lg:col-span-3" : "lg:col-span-3"}
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Card
-        className={`group relative overflow-hidden bg-card/50 backdrop-blur-sm border ${division.borderColor} transition-all duration-500 hover:bg-card/80`}
-      >
-        {/* Gradient overlay */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br ${division.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-        />
-
-        <CardContent className="relative p-8">
-          {/* Icon */}
-          <motion.div
-            className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/50 ${division.accentColor} mb-6`}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <division.icon className="w-7 h-7" />
-          </motion.div>
-
-          {/* Subtitle */}
-          <span
-            className={`text-xs font-mono uppercase tracking-widest ${division.accentColor} opacity-80`}
-          >
-            {division.subtitle}
-          </span>
-
-          {/* Title */}
-          <h3 className="text-2xl font-bold mt-2 mb-4 text-foreground">
-            <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span>{division.title}</span>
-              {division.comingSoon ? (
-                <span className="text-sm font-mono text-muted-foreground">
-                  (Coming Soon)
-                </span>
-              ) : null}
-            </span>
-          </h3>
-
-          {/* Description */}
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            {division.description}
-          </p>
-
-          {/* Features */}
-          <ul className="space-y-2 mb-6">
-            {division.features.map((feature) => (
-              <li
-                key={feature}
-                className="flex items-center gap-2 text-sm text-muted-foreground"
-              >
-                <Sparkles className={`w-3 h-3 ${division.accentColor}`} />
-                {feature}
-              </li>
-            ))}
-          </ul>
-
-          {/* CTA */}
-          {division.href ? (
-            <motion.a
-              href={division.href}
-              className={`inline-flex items-center gap-2 text-sm font-medium ${division.accentColor} group/link`}
-              whileHover={{ x: 5 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn More
-              <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-            </motion.a>
-          ) : division.comingSoon ? (
-            <div className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
-              Coming Soon
-              <ArrowRight className="w-4 h-4 opacity-60" />
-            </div>
-          ) : null}
-        </CardContent>
-      </Card>
+      {program.href ? (
+        <a
+          href={program.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={baseClass}
+        >
+          {inner}
+        </a>
+      ) : (
+        <div className={baseClass}>{inner}</div>
+      )}
     </motion.div>
   );
 }
@@ -184,32 +181,31 @@ export function DivisionsSection() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="divisions" className="relative py-32 px-6">
-      <div className="container mx-auto max-w-7xl">
-        {/* Section Header */}
+    <section id="capabilities" className="relative px-6 py-28 sm:py-36">
+      <div className="mx-auto max-w-6xl">
+        <div className="section-rule mb-16 h-px w-full" />
+
         <motion.div
           ref={headerRef}
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 24 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-xs font-mono uppercase tracking-widest text-primary mb-4 block">
-            Our Divisions
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 text-balance">
-            Solving the Impossible
+          <span className="eyebrow text-primary">What we build</span>
+          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            Three programs, one stack.
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Four pillars of innovation driving humanity forward. Each division
-            tackles challenges once thought insurmountable.
+          <p className="mt-5 text-pretty text-lg leading-relaxed text-muted-foreground">
+            From the factory floor to the launch pad, our robotics and embodied
+            AI share a common intelligence layer — the same models that move our
+            machines also power the products we ship.
           </p>
         </motion.div>
 
-        {/* Division Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {divisions.map((division, index) => (
-            <DivisionCard key={division.title} division={division} index={index} />
+        <div className="mt-14 grid gap-5 lg:grid-cols-6">
+          {programs.map((program, index) => (
+            <ProgramCard key={program.title} program={program} index={index} />
           ))}
         </div>
       </div>

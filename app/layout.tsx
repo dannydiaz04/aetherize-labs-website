@@ -1,16 +1,17 @@
 import React from "react"
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space", display: "swap" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono-jb", display: "swap" });
 
 export const metadata: Metadata = {
-  title: 'Aetherize Labs | Solving the Impossible',
-  description: 'Aetherize Labs LLC is a deep tech company pioneering SSTO aerospace, space mining, and AI applications. The Universe is waiting to be known.',
-  keywords: ['aerospace', 'SSTO', 'space mining', 'AI', 'deep tech', 'analytics', 'nutrition AI'],
+  title: 'Aetherize Labs | Embodied Intelligence for the Physical World',
+  description: 'Aetherize Labs builds robots, the embodied AI that gives them autonomy, and the robotic systems powering tomorrow\u2019s aerospace launch operations.',
+  keywords: ['robotics', 'embodied intelligence', 'embodied AI', 'humanoid robots', 'aerospace', 'launch operations', 'AI', 'deep tech', 'autonomy'],
   authors: [{ name: 'Aetherize Labs LLC' }],
   icons: {
     icon: [
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a12',
+  themeColor: '#08090c',
   width: 'device-width',
   initialScale: 1,
 }
@@ -45,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground`}>
         {children}
         <Analytics />
       </body>

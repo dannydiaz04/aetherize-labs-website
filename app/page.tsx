@@ -10,33 +10,19 @@ import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-background overflow-x-hidden">
-      {/* Animated Particle Background */}
+    <main id="top" className="relative min-h-screen overflow-x-hidden bg-background">
       <ParticleField />
 
-      {/* Navigation */}
-      <Navigation />
-
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Divisions Section */}
-      <DivisionsSection />
-
-      {/* Video Showcase */}
-      <VideoShowcase />
-
-      {/* Mission Section */}
-      <MissionSection />
-
-      {/* Technology Section */}
-      <TechnologySection />
-
-      {/* Contact Section */}
-      <ContactSection />
-
-      {/* Footer */}
-      <Footer />
+      <div className="relative z-10">
+        <Navigation />
+        <HeroSection />
+        <DivisionsSection />
+        <VideoShowcase />
+        <MissionSection />
+        <TechnologySection />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 }
