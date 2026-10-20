@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { value: "3", label: "Core programs" },
+  { value: "4", label: "Active programs" },
   { value: "∞", label: "Possibilities" },
   { value: "1", label: "Shared mission" },
   { value: "0", label: "Limits" },
@@ -43,10 +43,11 @@ export function MissionSection() {
           </blockquote>
 
           <p className="mx-auto mt-8 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Intelligence is information given direction; motion is energy given
-            purpose. Aetherize Labs lives at the boundary where the two meet —
-            turning models into machines, and machines into work, from the
-            factory floor to the launch pad.
+            Rocketry is energy at its most concentrated; guidance and autonomy
+            are information at its most precise. Aetherize Labs lives at the
+            boundary where the two meet — pairing high-thrust propulsion and
+            launch vehicles with intelligent avionics, robotics, and software to
+            carry missions from the launch pad to orbit.
           </p>
 
           <div className="mt-8">

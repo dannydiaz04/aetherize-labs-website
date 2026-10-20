@@ -28,46 +28,46 @@ type Program = {
 const programs: Program[] = [
   {
     index: "01",
-    title: "Robotics & Embodied Intelligence",
-    subtitle: "Core program",
+    title: "Launch Vehicles & Rocket Propulsion",
+    subtitle: "Primary program",
     description:
-      "General-purpose robots and the embodied AI that lets them perceive, reason, and act in unstructured environments — bridging the gap between digital intelligence and physical work.",
-    icon: Bot,
-    points: ["Whole-body manipulation", "Real-world autonomy", "Learned control policies"],
+      "Reusable orbital launch vehicles and high-thrust rocket engines engineered for rapid turnaround, high mass-fraction efficiency, and reliable access to space.",
+    icon: Rocket,
+    points: ["Reusable stage architecture", "High-thrust propulsion", "Rapid pad turnaround"],
     featured: true,
   },
   {
     index: "02",
-    title: "Aerospace Launch Operations",
-    subtitle: "Core program",
+    title: "Autonomous Avionics & Pad Robotics",
+    subtitle: "Supporting program",
     description:
-      "Robotic ground systems and autonomous handling for launch sites — automating the dangerous, repetitive, and precision-critical work of getting hardware to orbit.",
-    icon: Rocket,
-    points: ["Autonomous ground handling", "Robotic integration & checkout", "Range automation"],
+      "Flight-critical guidance, navigation, and control paired with robotic ground systems that automate vehicle integration, propellant servicing, and launch operations.",
+    icon: Bot,
+    points: ["Guidance, navigation & control", "Robotic pad & stage handling", "Autonomous range checkout"],
     featured: true,
   },
   {
     index: "03",
+    title: "Ignition Analytics AI",
+    subtitle: "Applied AI · In development",
+    description:
+      "High-frequency telemetry analysis, anomaly detection, and predictive modeling — born from rocket test stands and flight data to turn raw sensor streams into real-time decisions.",
+    icon: BarChart3,
+    points: ["Test-stand & flight telemetry", "Anomaly detection", "Real-time predictive modeling"],
+    status: "soon",
+    cta: "Coming soon",
+  },
+  {
+    index: "04",
     title: "Phone Eats First AI",
     subtitle: "Applied AI · Live",
     description:
-      "An AI-powered nutrition platform that makes calorie tracking effortless, with agentic guidance that helps people reach their goals.",
+      "An AI-powered nutrition platform that makes calorie tracking effortless, applying our perception and agentic intelligence stack to everyday human performance.",
     icon: Apple,
     points: ["Effortless calorie tracking", "Agentic coaching", "Intuitive analytics"],
     href: "https://phoneeatsfirst.ai",
     cta: "Visit product",
     status: "live",
-  },
-  {
-    index: "04",
-    title: "Ignition Analytics AI",
-    subtitle: "Applied AI · In development",
-    description:
-      "Advanced analytics and predictive modeling that turns raw operational data into decisions — built on the same intelligence stack powering our robots.",
-    icon: BarChart3,
-    points: ["Predictive analytics", "Pattern recognition", "Real-time processing"],
-    status: "soon",
-    cta: "Coming soon",
   },
 ];
 
@@ -194,12 +194,12 @@ export function DivisionsSection() {
         >
           <span className="eyebrow text-primary">What we build</span>
           <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Three programs, one stack.
+            Built for flight. Powered by intelligence.
           </h2>
           <p className="mt-5 text-pretty text-lg leading-relaxed text-muted-foreground">
-            From the factory floor to the launch pad, our robotics and embodied
-            AI share a common intelligence layer — the same models that move our
-            machines also power the products we ship.
+            From high-thrust rocket engines and reusable stages to the
+            autonomous avionics, pad robotics, and AI software that run every
+            mission — our programs are built on a unified engineering stack.
           </p>
         </motion.div>
 

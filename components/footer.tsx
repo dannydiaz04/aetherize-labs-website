@@ -6,8 +6,8 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 
 const footerLinks = {
   programs: [
-    { name: "Robotics & Embodied AI", href: "#capabilities" },
-    { name: "Aerospace Launch Operations", href: "#capabilities" },
+    { name: "Launch Vehicles & Propulsion", href: "#capabilities" },
+    { name: "Autonomous Avionics & Robotics", href: "#capabilities" },
     { name: "Ignition Analytics AI", href: "#capabilities" },
     { name: "Phone Eats First AI", href: "https://phoneeatsfirst.ai", external: true },
   ],
@@ -70,8 +70,9 @@ export function Footer() {
           <div className="lg:col-span-2">
             <AetherizeLogo />
             <p className="mt-6 max-w-sm leading-relaxed text-muted-foreground">
-              Building embodied intelligence for the physical world — from the
-              factory floor to the launch pad.
+              Designing and building next-generation launch vehicles, rocket
+              propulsion, and autonomous flight systems — from the test stand to
+              orbit.
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (
@@ -108,7 +109,7 @@ export function Footer() {
         </div>
 
         <p className="eyebrow mt-12 text-center text-muted-foreground/40">
-          Intelligence, embodied.
+          Engineered for orbit.
         </p>
       </div>
     </footer>

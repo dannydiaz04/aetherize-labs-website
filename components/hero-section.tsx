@@ -5,9 +5,9 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { value: "3", label: "Core programs" },
-  { value: "Earth → Orbit", label: "Operating domain" },
-  { value: "24/7", label: "Autonomous systems" },
+  { value: "Pad → Orbit", label: "Flight domain" },
+  { value: "Reusable", label: "Launch architecture" },
+  { value: "Autonomous", label: "Avionics & range" },
 ];
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -33,7 +33,7 @@ export function HeroSection() {
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
             <span className="eyebrow text-muted-foreground">
-              Robotics · Embodied Intelligence · Aerospace
+              Rocketry · Propulsion · Autonomous Flight
             </span>
           </span>
         </motion.div>
@@ -45,9 +45,9 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.08, ease }}
         >
-          <span className="text-foreground">Embodied intelligence</span>
+          <span className="text-foreground">Next-generation rocketry</span>
           <br />
-          <span className="text-primary">for the physical world.</span>
+          <span className="text-primary">engineered for orbit.</span>
         </motion.h1>
 
         {/* Subhead */}
@@ -57,9 +57,9 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.18, ease }}
         >
-          Aetherize Labs builds robots, the embodied AI that gives them
-          autonomy, and the robotic systems engineered to run tomorrow&apos;s
-          aerospace launch operations.
+          Aetherize Labs designs and builds orbital launch vehicles, high-thrust
+          rocket propulsion, and the autonomous avionics, robotics, and AI
+          systems that carry missions from the launch pad to orbit.
         </motion.p>
 
         {/* CTAs */}

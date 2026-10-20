@@ -9,9 +9,9 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono-jb", display: "swap" });
 
 export const metadata: Metadata = {
-  title: 'Aetherize Labs | Embodied Intelligence for the Physical World',
-  description: 'Aetherize Labs builds robots, the embodied AI that gives them autonomy, and the robotic systems powering tomorrow\u2019s aerospace launch operations.',
-  keywords: ['robotics', 'embodied intelligence', 'embodied AI', 'humanoid robots', 'aerospace', 'launch operations', 'AI', 'deep tech', 'autonomy'],
+  title: 'Aetherize Labs | Next-Generation Rocketry & Autonomous Launch Systems',
+  description: 'Aetherize Labs designs and builds orbital launch vehicles, advanced rocket propulsion, and the autonomous avionics, robotics, and AI systems powering flight from pad to orbit.',
+  keywords: ['rocketry', 'launch vehicles', 'rocket propulsion', 'aerospace', 'orbital launch', 'autonomous avionics', 'GNC', 'space systems', 'robotics', 'AI'],
   authors: [{ name: 'Aetherize Labs LLC' }],
   icons: {
     icon: [

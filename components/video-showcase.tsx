@@ -35,9 +35,9 @@ export function VideoShowcase() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="eyebrow text-primary">In motion</span>
+          <span className="eyebrow text-primary">Flight domain</span>
           <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Beyond the horizon.
+            Beyond the atmosphere.
           </h2>
         </motion.div>
 
@@ -98,7 +98,7 @@ export function VideoShowcase() {
               </button>
             </div>
             <div className="eyebrow text-foreground/70">
-              Aetherize Labs — Earth to orbit
+              Aetherize Labs — Pad to orbit
             </div>
           </div>
         </motion.div>
@@ -109,9 +109,9 @@ export function VideoShowcase() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          Our vision spans the full operating domain — from robots working on the
-          ground to the autonomous systems that will help carry hardware to
-          orbit.
+          Our mission profile spans the full ascent to orbit — from main engine
+          ignition and stage separation to orbital insertion, supported by
+          autonomous flight and ground systems at every phase.
         </motion.p>
       </div>
     </section>

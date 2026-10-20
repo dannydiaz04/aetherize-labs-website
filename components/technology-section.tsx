@@ -3,12 +3,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  BrainCircuit,
-  ScanEye,
-  Hand,
-  Boxes,
-  Cpu,
+  Flame,
   Radar,
+  Shield,
+  Cpu,
+  Boxes,
+  Bot,
   type LucideProps,
 } from "lucide-react";
 import type { ComponentType } from "react";
@@ -21,40 +21,40 @@ type Tech = {
 
 const technologies: Tech[] = [
   {
-    icon: BrainCircuit,
-    title: "Embodied foundation models",
+    icon: Flame,
+    title: "Rocket propulsion systems",
     description:
-      "Large models trained to map perception directly to action, giving robots general skills that transfer across tasks and hardware.",
-  },
-  {
-    icon: ScanEye,
-    title: "Perception & sensor fusion",
-    description:
-      "Real-time fusion of vision, depth, and proprioception into a coherent world model robust enough for the real world.",
-  },
-  {
-    icon: Hand,
-    title: "Manipulation & locomotion",
-    description:
-      "Dexterous control policies for grasping, assembly, and whole-body movement across uneven and dynamic terrain.",
-  },
-  {
-    icon: Boxes,
-    title: "Sim-to-real training",
-    description:
-      "Massively parallel simulation and domain randomization that lets policies learn safely before they ever touch a payload.",
-  },
-  {
-    icon: Cpu,
-    title: "On-robot edge compute",
-    description:
-      "Low-latency inference at the edge, engineered for power, thermal, and reliability budgets that survive the launch range.",
+      "High-efficiency combustion cycles, turbomachinery, and regenerative cooling engineered for deep throttling and multi-mission reusability.",
   },
   {
     icon: Radar,
-    title: "Launch automation systems",
+    title: "Guidance, navigation & control",
     description:
-      "Autonomous ground handling, integration, and range coordination that take humans out of the most hazardous loops.",
+      "Closed-loop trajectory optimization, sensor fusion, and thrust-vector control that guide vehicles through max-Q, stage separation, and recovery.",
+  },
+  {
+    icon: Shield,
+    title: "Aerostructures & thermal protection",
+    description:
+      "Lightweight composite and metallic primary structures paired with thermal protection systems built for hypersonic ascent and atmospheric re-entry.",
+  },
+  {
+    icon: Cpu,
+    title: "Fault-tolerant flight avionics",
+    description:
+      "Radiation-resilient flight computers and deterministic real-time software delivering low-latency onboard autonomy from liftoff to orbital insertion.",
+  },
+  {
+    icon: Boxes,
+    title: "Hardware-in-the-loop simulation",
+    description:
+      "High-fidelity 6-DOF flight dynamics and propulsion simulations that validate guidance policies and avionics before hardware ever reaches the test stand.",
+  },
+  {
+    icon: Bot,
+    title: "Autonomous pad & ground robotics",
+    description:
+      "Robotic umbilical handling, automated propellant loading, and autonomous range countdown systems that enable rapid, crew-safe launch cadence.",
   },
 ];
 
@@ -103,11 +103,12 @@ export function TechnologySection() {
         >
           <span className="eyebrow text-primary">The stack</span>
           <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Intelligence that acts.
+            Propulsion meets precision.
           </h2>
           <p className="mt-5 text-pretty text-lg leading-relaxed text-muted-foreground">
-            Our core technologies turn models into motion — the connective
-            tissue between an AI&apos;s decision and a robot&apos;s next move.
+            Our core technologies unite high-thrust rocket propulsion, flight
+            structures, and onboard autonomy — engineered to perform across
+            extreme thermal, structural, and dynamic flight regimes.
           </p>
         </motion.div>
 

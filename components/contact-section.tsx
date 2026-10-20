@@ -57,8 +57,9 @@ export function ContactSection() {
               Build the impossible with us.
             </h2>
             <p className="mt-5 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground">
-              Researchers, engineers, operators, and investors — if you want to
-              put intelligence into motion, we want to hear from you.
+              Propulsion engineers, avionics architects, flight software
+              developers, and mission partners — if you want to build the next
+              generation of launch systems, we want to hear from you.
             </p>
 
             <div className="mt-10 space-y-3">
