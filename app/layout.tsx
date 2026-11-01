@@ -14,20 +14,7 @@ export const metadata: Metadata = {
   keywords: ['rocketry', 'launch vehicles', 'rocket propulsion', 'aerospace', 'orbital launch', 'autonomous avionics', 'GNC', 'space systems', 'robotics', 'AI'],
   authors: [{ name: 'Aetherize Labs LLC' }],
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: '/blank-icon.svg',
     apple: '/apple-icon.png',
   },
     generator: 'v0.app'

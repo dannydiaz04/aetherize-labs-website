@@ -40,7 +40,7 @@ export function Navigation() {
                 : "border border-transparent"
             }`}
           >
-            <AetherizeLogo />
+            <AetherizeLogo showIcon={false} />
 
             <div className="hidden items-center gap-1 md:flex">
               {navItems.map((item) => (
