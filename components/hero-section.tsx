@@ -51,16 +51,33 @@ export function HeroSection() {
         </motion.h1>
 
         {/* Subhead */}
-        <motion.p
-          className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl"
+        <motion.div
+          className="mt-7 max-w-2xl space-y-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.18, ease }}
         >
-          Aetherize Labs designs and builds orbital launch vehicles, high-thrust
-          rocket propulsion, and the autonomous avionics, robotics, and AI
-          systems that carry missions from the launch pad to orbit.
-        </motion.p>
+          <p>
+            Aetherize Labs is a vertically integrated, AI-native aerospace
+            company developing launch services for suborbital and orbital
+            payloads. We are focused on medium-lift rockets, with heavy-lift and
+            super-heavy-lift vehicles planned for future phases.
+          </p>
+          <p>
+            Affordable launch depends on more than engine efficiency. We design,
+            develop, manufacture, and plan to operate our own rocket engines and
+            launch vehicles, bringing AI-enabled engineering and operations to
+            the full challenge of orbital delivery.
+          </p>
+          <p>
+            AI can reduce the cost of iteration and engineering labor; reuse of
+            every stage can reduce hardware replacement costs; higher launch
+            cadence can spread fixed costs across more flights; and standardized
+            payload integration and high utilization can lower cost per kilogram.
+            Together, these advances are intended to reduce the fully burdened
+            cost of delivery and make launch more affordable for customers.
+          </p>
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
