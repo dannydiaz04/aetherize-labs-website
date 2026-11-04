@@ -6,24 +6,14 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 
 const footerLinks = {
   programs: [
-    { name: "Launch Vehicles & Propulsion", href: "#capabilities" },
-    { name: "Autonomous Avionics & Robotics", href: "#capabilities" },
-    { name: "Ignition Analytics AI", href: "#capabilities" },
-    { name: "Phone Eats First AI", href: "https://phoneeatsfirst.ai", external: true },
+    { name: "Launch Vehicles & Propulsion", href: "/#capabilities" },
+    { name: "Subsidiaries", href: "/subsidiaries" },
   ],
   company: [
-    { name: "Mission", href: "#mission" },
-    { name: "Technology", href: "#technology" },
-    { name: "Careers", href: "#contact" },
-    { name: "Contact", href: "#contact" },
-  ],
-  products: [
-    {
-      name: "Phone Eats First (iOS)",
-      href: "https://apps.apple.com/us/app/phone-eats-first-ai/id6747300501",
-      external: true,
-    },
-    { name: "phoneeatsfirst.ai", href: "https://phoneeatsfirst.ai", external: true },
+    { name: "Mission", href: "/#mission" },
+    { name: "Technology", href: "/#technology" },
+    { name: "Careers", href: "/#contact" },
+    { name: "Contact", href: "/#contact" },
   ],
 };
 
@@ -66,13 +56,13 @@ export function Footer() {
   return (
     <footer className="relative border-t border-border bg-background/60">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <AetherizeLogo />
             <p className="mt-6 max-w-sm leading-relaxed text-muted-foreground">
               Designing and building next-generation launch vehicles, rocket
-              propulsion, and autonomous flight systems — from the test stand to
-              orbit.
+              propulsion, and the systems that support flight — from the test
+              stand to orbit.
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (
@@ -91,7 +81,6 @@ export function Footer() {
 
           <LinkColumn title="Programs" links={footerLinks.programs} />
           <LinkColumn title="Company" links={footerLinks.company} />
-          <LinkColumn title="Products" links={footerLinks.products} />
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">

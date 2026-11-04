@@ -8,7 +8,6 @@ import {
   Shield,
   Cpu,
   Boxes,
-  Bot,
   type LucideProps,
 } from "lucide-react";
 import type { ComponentType } from "react";
@@ -49,12 +48,6 @@ const technologies: Tech[] = [
     title: "Hardware-in-the-loop simulation",
     description:
       "High-fidelity 6-DOF flight dynamics and propulsion simulations that validate guidance policies and avionics before hardware ever reaches the test stand.",
-  },
-  {
-    icon: Bot,
-    title: "Autonomous pad & ground robotics",
-    description:
-      "Robotic umbilical handling, automated propellant loading, and autonomous range countdown systems that enable rapid, crew-safe launch cadence.",
   },
 ];
 

@@ -11,7 +11,7 @@ export function AetherizeLogo({
 }) {
   return (
     <motion.a
-      href="#top"
+      href="/#top"
       className={`group flex items-center gap-3 ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

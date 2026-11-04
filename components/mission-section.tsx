@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { value: "4", label: "Active programs" },
+  { value: "1", label: "Primary focus" },
   { value: "∞", label: "Possibilities" },
   { value: "1", label: "Shared mission" },
   { value: "0", label: "Limits" },
@@ -46,8 +46,8 @@ export function MissionSection() {
             Rocketry is energy at its most concentrated; guidance and autonomy
             are information at its most precise. Aetherize Labs lives at the
             boundary where the two meet — pairing high-thrust propulsion and
-            launch vehicles with intelligent avionics, robotics, and software to
-            carry missions from the launch pad to orbit.
+            launch vehicles with intelligent engineering and software to carry
+            missions from the launch pad to orbit.
           </p>
 
           <div className="mt-8">
