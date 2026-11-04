@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { AetherizeLogo } from "./aetherize-logo";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { name: "Capabilities", href: "#capabilities" },
-  { name: "Mission", href: "#mission" },
-  { name: "Technology", href: "#technology" },
-  { name: "Contact", href: "#contact" },
+  { name: "Capabilities", href: "/#capabilities" },
+  { name: "Mission", href: "/#mission" },
+  { name: "Technology", href: "/#technology" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Navigation() {
@@ -59,10 +60,10 @@ export function Navigation() {
                 asChild
                 className="group rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90"
               >
-                <a href="#contact">
+                <Link href="/#contact">
                   Get in touch
                   <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                </Link>
               </Button>
             </div>
 
@@ -109,7 +110,7 @@ export function Navigation() {
                   className="rounded-full bg-primary px-6 text-primary-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <a href="#contact">Get in touch</a>
+                  <Link href="/#contact">Get in touch</Link>
                 </Button>
               </motion.div>
             </div>

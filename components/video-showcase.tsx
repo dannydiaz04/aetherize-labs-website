@@ -110,8 +110,7 @@ export function VideoShowcase() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           Our mission profile spans the full ascent to orbit — from main engine
-          ignition and stage separation to orbital insertion, supported by
-          autonomous flight and ground systems at every phase.
+          ignition and stage separation to orbital insertion.
         </motion.p>
       </div>
     </section>

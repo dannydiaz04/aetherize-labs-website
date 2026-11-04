@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 const stats = [
   { value: "Pad → Orbit", label: "Flight domain" },
   { value: "Reusable", label: "Launch architecture" },
-  { value: "Autonomous", label: "Avionics & range" },
+  { value: "AI-native", label: "Engineering approach" },
 ];
 
 const ease = [0.16, 1, 0.3, 1] as const;
